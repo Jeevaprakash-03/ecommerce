@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Product List</h2>
+    <div id="product-list"></div>
+
+    <script>
+        fetch("http://127.0.0.1:5000/products")
+            .then(res => res.json())
+            .then(data => {
+                const list = document.getElementById("product-list");
+                data.forEach(p => {
+                    const item = document.createElement("div");
+                    item.innerText = `${p.name} - ₹${p.price}`;
+                    list.appendChild(item);
+                });
+            });
+    </script>
+</body>
+</html>
